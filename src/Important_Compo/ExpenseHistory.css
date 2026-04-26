@@ -1,0 +1,1072 @@
+/* ============================================================================
+   DESIGN TOKENS (PRO LEVEL FOUNDATION)
+   ============================================================================ */
+
+:root {
+  --color-primary: #1f5fbf;
+  --color-secondary: #12715f;
+  --color-danger: #d64545;
+
+  --color-text: #142235;
+  --color-muted: #627286;
+  --color-border: rgba(20, 34, 53, 0.08);
+  --color-bg: #ffffff;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+
+  --shadow-sm: 0 2px 6px rgba(0,0,0,0.05);
+  --shadow-md: 0 6px 18px rgba(0,0,0,0.08);
+
+  --spacing-xs: 6px;
+  --spacing-sm: 10px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+}
+
+/* ============================================================================
+   BASE CONTAINER
+   ============================================================================ */
+
+.expense-pdf-container {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ============================================================================
+   HEADER
+   ============================================================================ */
+
+.pdf-header {
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* ============================================================================
+   SUMMARY CARDS
+   ============================================================================ */
+
+.pdf-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+  margin: var(--spacing-xl) 0;
+}
+
+.summary-card {
+  padding: var(--spacing-lg);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  box-shadow: var(--shadow-sm);
+  transition: 0.2s ease;
+}
+
+.summary-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.summary-label {
+  font-size: 12px;
+  color: var(--color-muted);
+  margin-bottom: var(--spacing-sm);
+}
+
+.summary-amount {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.summary-amount.expense { color: var(--color-danger); }
+.summary-amount.balance { color: var(--color-secondary); }
+
+/* ============================================================================
+   TABLE (PRO CLEAN)
+   ============================================================================ */
+
+.transactions-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-primary);
+}
+
+.transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.transactions-table thead {
+  background: rgba(31, 95, 191, 0.06);
+}
+
+.transactions-table th {
+  padding: 12px;
+  font-size: 12px;
+  text-align: left;
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.transactions-table td {
+  padding: 12px;
+  font-size: 13px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.transactions-table tbody tr:hover {
+  background: rgba(31, 95, 191, 0.04);
+}
+
+/* ALIGNMENTS */
+
+.col-amount,
+.col-balance {
+  text-align: right;
+  font-weight: 700;
+}
+
+.col-amount { color: var(--color-danger); }
+.col-balance { color: var(--color-secondary); }
+
+/* ============================================================================
+   BADGES
+   ============================================================================ */
+
+.type-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  background: rgba(31, 95, 191, 0.08);
+  color: var(--color-primary);
+}
+
+/* ============================================================================
+   FOOTER
+   ============================================================================ */
+
+.pdf-footer {
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.footer-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-label {
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.footer-value {
+  font-weight: 700;
+}
+
+/* ============================================================================
+   BUTTONS (PRODUCT LEVEL)
+   ============================================================================ */
+
+.button {
+  border-radius: var(--radius-sm);
+  padding: 12px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: 0.25s ease;
+}
+
+/* Primary */
+.button--primary {
+  background: var(--color-primary);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.button--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Secondary */
+.button--secondary {
+  background: rgba(31, 95, 191, 0.1);
+  color: var(--color-primary);
+}
+
+/* ============================================================================
+   PRINT (PROFESSIONAL PDF OUTPUT)
+   ============================================================================ */
+
+@media print {
+  * {
+    box-shadow: none !important;
+  }
+
+  .expense-pdf-container {
+    font-size: 12px;
+  }
+
+  .transactions-table th {
+    color: #000;
+  }
+
+  .col-amount,
+  .col-balance {
+    color: #000;
+  }
+
+  @page {
+    margin: 12mm;
+  }
+}
+
+/* ============================================================================
+   RESPONSIVE (CLEANED)
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .pdf-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .col-description,
+  .col-date {
+    display: none;
+  }
+}
+/* ========================================================================
+   EXPENSE BREAKDOWN (PRO SECTION)
+   ======================================================================== */
+
+.pdf-breakdown {
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  box-shadow: var(--shadow-sm);
+}
+
+.breakdown-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.breakdown-item {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-sm);
+  background: rgba(31, 95, 191, 0.04);
+  border: 1px solid var(--color-border);
+}
+
+.breakdown-type {
+  font-size: 12px;
+  color: var(--color-muted);
+  margin-bottom: 6px;
+}
+
+.breakdown-amount {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* ============================================================================
+   MOBILE RESPONSIVE DESIGN - EXPENSE HISTORY
+   ============================================================================ */
+
+/* Small phones (max 480px) */
+@media (max-width: 480px) {
+  .expense-pdf-container {
+    font-size: 12px;
+  }
+
+  .pdf-header {
+    padding: var(--spacing-lg) 0;
+  }
+
+  .header-title {
+    font-size: 20px;
+  }
+
+  .header-content {
+    font-size: 13px;
+  }
+
+  .pdf-summary {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: var(--spacing-lg) 0;
+  }
+
+  .summary-card {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-sm);
+  }
+
+  .summary-label {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+
+  .summary-amount {
+    font-size: 18px;
+  }
+
+  .transactions-title {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  /* Responsive table - convert to card view on mobile */
+  .transactions-table {
+    font-size: 12px;
+  }
+
+  .transactions-table thead {
+    display: none;
+  }
+
+  .transactions-table,
+  .transactions-table tbody,
+  .transactions-table tr,
+  .transactions-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .transactions-table tr {
+    margin-bottom: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 10px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .transactions-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    text-align: left;
+    border: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .transactions-table td:last-child {
+    border-bottom: none;
+  }
+
+  .transactions-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--color-muted);
+    flex: 0 0 40%;
+  }
+
+  .col-amount,
+  .col-balance {
+    text-align: right;
+  }
+
+  .type-badge {
+    padding: 3px 8px;
+    font-size: 10px;
+    border-radius: 16px;
+  }
+
+  .pdf-footer {
+    margin-top: var(--spacing-md);
+    padding-top: 10px;
+  }
+
+  .footer-item {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .footer-label {
+    font-size: 12px;
+  }
+
+  .button {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+  .button--primary,
+  .button--secondary {
+    border-radius: var(--radius-sm);
+  }
+
+  .pdf-breakdown {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
+  }
+
+  .breakdown-title {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .breakdown-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .breakdown-item {
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+  }
+
+  .breakdown-type {
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+
+  .breakdown-amount {
+    font-size: 14px;
+  }
+}
+
+/* Medium phones (481px - 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
+  .expense-pdf-container {
+    font-size: 13px;
+  }
+
+  .pdf-header {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .header-title {
+    font-size: 22px;
+  }
+
+  .pdf-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: var(--spacing-lg) 0;
+  }
+
+  .summary-card {
+    padding: var(--spacing-md);
+  }
+
+  .summary-label {
+    font-size: 12px;
+  }
+
+  .summary-amount {
+    font-size: 20px;
+  }
+
+  .transactions-title {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  /* Hybrid table view for medium screens */
+  .transactions-table {
+    font-size: 13px;
+    overflow-x: auto;
+  }
+
+  .transactions-table th,
+  .transactions-table td {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .transactions-table th {
+    font-size: 11px;
+  }
+
+  /* Hide less important columns on medium screens */
+  .col-description {
+    display: none;
+  }
+
+  .type-badge {
+    padding: 4px 9px;
+    font-size: 10px;
+  }
+
+  .pdf-footer {
+    margin-top: var(--spacing-md);
+    padding-top: 12px;
+  }
+
+  .footer-item {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .button {
+    padding: 11px 18px;
+    font-size: 0.95rem;
+  }
+
+  .pdf-breakdown {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+  }
+
+  .breakdown-title {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .breakdown-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .breakdown-item {
+    padding: var(--spacing-sm);
+  }
+
+  .breakdown-type {
+    font-size: 12px;
+  }
+
+  .breakdown-amount {
+    font-size: 15px;
+  }
+}
+
+/* Extra small phones (below 320px) */
+@media (max-width: 320px) {
+  .expense-pdf-container {
+    font-size: 11px;
+  }
+
+  .header-title {
+    font-size: 18px;
+  }
+
+  .pdf-summary {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .summary-card {
+    padding: 10px;
+  }
+
+  .summary-amount {
+    font-size: 16px;
+  }
+
+  .transactions-table tr {
+    margin-bottom: 10px;
+    padding: 8px;
+  }
+
+  .button {
+    padding: 9px 12px;
+    font-size: 0.85rem;
+  }
+
+  .breakdown-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================================
+   PDF/PRINT OPTIMIZATION FOR MOBILE DOWNLOADS
+   ============================================================================ */
+
+/* Enhanced print mode - ensures proper PDF structure */
+@media print {
+  /* Reset all visual effects */
+  * {
+    box-shadow: none !important;
+    background-image: none !important;
+    text-shadow: none !important;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .expense-pdf-container {
+    font-size: 11px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    color: #000;
+  }
+
+  /* Header optimization for PDF */
+  .pdf-header {
+    page-break-after: avoid;
+    padding: 8mm 0;
+    margin: 0 0 8mm;
+    border-bottom: 1px solid #000;
+  }
+
+  .header-title {
+    font-size: 18px;
+    color: #000;
+    margin: 0 0 4px;
+  }
+
+  .header-content {
+    font-size: 10px;
+    color: #333;
+    margin: 0;
+  }
+
+  /* Summary cards - maintain structure in PDF */
+  .pdf-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6mm;
+    margin: 8mm 0;
+    page-break-inside: avoid;
+  }
+
+  .summary-card {
+    padding: 6mm;
+    border: 1px solid #000;
+    background: #fff;
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+
+  .summary-label {
+    font-size: 9px;
+    color: #333;
+    margin: 0 0 3mm;
+  }
+
+  .summary-amount {
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+  }
+
+  .summary-amount.expense {
+    color: #d64545;
+  }
+
+  .summary-amount.balance {
+    color: #12715f;
+  }
+
+  /* Table structure preserved for PDF */
+  .transactions-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #000;
+    margin: 8mm 0 4mm;
+    page-break-after: avoid;
+  }
+
+  .transactions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    page-break-inside: avoid;
+  }
+
+  .transactions-table thead {
+    background: #f0f0f0;
+    page-break-after: avoid;
+  }
+
+  .transactions-table th {
+    padding: 4mm 3mm;
+    font-size: 9px;
+    font-weight: 700;
+    text-align: left;
+    color: #000;
+    border: 1px solid #000;
+    background: #f0f0f0;
+  }
+
+  .transactions-table td {
+    padding: 4mm 3mm;
+    font-size: 10px;
+    border: 1px solid #ccc;
+    color: #000;
+  }
+
+  .transactions-table tbody tr {
+    page-break-inside: avoid;
+  }
+
+  .col-amount,
+  .col-balance {
+    text-align: right;
+    font-weight: 700;
+    color: #000;
+  }
+
+  .col-amount {
+    color: #d64545;
+  }
+
+  .col-balance {
+    color: #12715f;
+  }
+
+  .type-badge {
+    padding: 2px 6px;
+    font-size: 8px;
+    border: 1px solid #000;
+    background: #f0f0f0;
+    color: #000;
+    border-radius: 3px;
+  }
+
+  /* Footer - ensure proper spacing */
+  .pdf-footer {
+    margin-top: 8mm;
+    padding-top: 4mm;
+    border-top: 1px solid #000;
+    page-break-inside: avoid;
+  }
+
+  .footer-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3mm;
+    font-size: 10px;
+  }
+
+  .footer-label {
+    color: #333;
+  }
+
+  .footer-value {
+    font-weight: 700;
+    color: #000;
+  }
+
+  /* Breakdown section */
+  .pdf-breakdown {
+    margin-top: 8mm;
+    margin-bottom: 8mm;
+    padding: 6mm;
+    border: 1px solid #000;
+    page-break-inside: avoid;
+  }
+
+  .breakdown-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 6mm;
+  }
+
+  .breakdown-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4mm;
+  }
+
+  .breakdown-item {
+    padding: 5mm;
+    border: 1px solid #ccc;
+    page-break-inside: avoid;
+  }
+
+  .breakdown-type {
+    font-size: 9px;
+    color: #333;
+    margin: 0 0 3mm;
+  }
+
+  .breakdown-amount {
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+  }
+
+  /* Hide interactive elements in PDF */
+  button,
+  .button,
+  .icon-button {
+    display: none !important;
+  }
+
+  /* Page settings */
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+}
+
+/* ============================================================================
+   PRINT MODE FOR SMALL PHONES (max-width: 480px)
+   ============================================================================ */
+@media print and (max-width: 480px) {
+  .expense-pdf-container {
+    font-size: 10px;
+  }
+
+  .pdf-header {
+    padding: 6mm 0;
+    margin: 0 0 6mm;
+  }
+
+  .header-title {
+    font-size: 15px;
+    margin: 0 0 2mm;
+  }
+
+  .header-content {
+    font-size: 9px;
+  }
+
+  /* Stack summary cards in single column for mobile PDF */
+  .pdf-summary {
+    grid-template-columns: 1fr;
+    gap: 4mm;
+    margin: 6mm 0;
+  }
+
+  .summary-card {
+    padding: 5mm;
+  }
+
+  .summary-label {
+    font-size: 8px;
+    margin: 0 0 2mm;
+  }
+
+  .summary-amount {
+    font-size: 14px;
+  }
+
+  .transactions-title {
+    font-size: 11px;
+    margin: 6mm 0 3mm;
+  }
+
+  /* Convert table to structured list format for mobile PDF */
+  .transactions-table {
+    font-size: 9px;
+  }
+
+  .transactions-table th {
+    padding: 3mm 2mm;
+    font-size: 8px;
+  }
+
+  .transactions-table td {
+    padding: 3mm 2mm;
+    font-size: 9px;
+  }
+
+  .type-badge {
+    padding: 1px 4px;
+    font-size: 7px;
+  }
+
+  .pdf-footer {
+    margin-top: 6mm;
+    padding-top: 3mm;
+  }
+
+  .footer-item {
+    margin-bottom: 2mm;
+    font-size: 9px;
+  }
+
+  .pdf-breakdown {
+    margin-top: 6mm;
+    padding: 5mm;
+  }
+
+  .breakdown-title {
+    font-size: 11px;
+    margin: 0 0 4mm;
+  }
+
+  /* Stack breakdown items for mobile */
+  .breakdown-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3mm;
+  }
+
+  .breakdown-item {
+    padding: 4mm;
+  }
+
+  .breakdown-type {
+    font-size: 8px;
+    margin: 0 0 2mm;
+  }
+
+  .breakdown-amount {
+    font-size: 12px;
+  }
+
+  @page {
+    margin: 8mm;
+  }
+}
+
+/* ============================================================================
+   PRINT MODE FOR MEDIUM PHONES (481px - 768px)
+   ============================================================================ */
+@media print and (max-width: 768px) and (min-width: 481px) {
+  .expense-pdf-container {
+    font-size: 11px;
+  }
+
+  .pdf-header {
+    padding: 7mm 0;
+    margin: 0 0 7mm;
+  }
+
+  .header-title {
+    font-size: 17px;
+  }
+
+  /* 2-column summary for medium screens */
+  .pdf-summary {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5mm;
+  }
+
+  .summary-card {
+    padding: 5mm;
+  }
+
+  .transactions-title {
+    font-size: 12px;
+    margin: 7mm 0 4mm;
+  }
+
+  .transactions-table {
+    font-size: 10px;
+  }
+
+  .transactions-table th,
+  .transactions-table td {
+    padding: 4mm 3mm;
+  }
+
+  .pdf-breakdown {
+    margin-top: 7mm;
+    padding: 5mm;
+  }
+
+  .breakdown-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4mm;
+  }
+
+  @page {
+    margin: 9mm;
+  }
+}
+
+/* ============================================================================
+   PRINT MODE FOR EXTRA SMALL PHONES (below 320px)
+   ============================================================================ */
+@media print and (max-width: 320px) {
+  .expense-pdf-container {
+    font-size: 9px;
+  }
+
+  .pdf-header {
+    padding: 5mm 0;
+    margin: 0 0 5mm;
+  }
+
+  .header-title {
+    font-size: 13px;
+  }
+
+  .header-content {
+    font-size: 8px;
+  }
+
+  .pdf-summary {
+    grid-template-columns: 1fr;
+    gap: 3mm;
+    margin: 5mm 0;
+  }
+
+  .summary-card {
+    padding: 4mm;
+  }
+
+  .summary-label {
+    font-size: 7px;
+  }
+
+  .summary-amount {
+    font-size: 12px;
+  }
+
+  .transactions-title {
+    font-size: 10px;
+    margin: 5mm 0 2mm;
+  }
+
+  .transactions-table th {
+    padding: 2mm 1.5mm;
+    font-size: 7px;
+  }
+
+  .transactions-table td {
+    padding: 2mm 1.5mm;
+    font-size: 8px;
+  }
+
+  .pdf-breakdown {
+    margin-top: 5mm;
+    padding: 4mm;
+  }
+
+  .breakdown-grid {
+    grid-template-columns: 1fr;
+    gap: 2mm;
+  }
+
+  .breakdown-item {
+    padding: 3mm;
+  }
+
+  @page {
+    margin: 6mm;
+  }
+}
