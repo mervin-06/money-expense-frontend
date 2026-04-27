@@ -1,6 +1,4 @@
-const API_BASE =
-  import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, "") ||
-  "http://localhost:8000";
+const API_BASE = import.meta.env.VITE_SERVER_APP_URL
 
 type ApiOptions = RequestInit & {
   token?: string | null;
