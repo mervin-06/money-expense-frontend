@@ -1,4 +1,6 @@
-const API_BASE = import.meta.env.VITE_SERVER_APP_URL
+const API_BASE =
+  import.meta.env.VITE_SERVER_APP_URL ||
+  "https://money-expense-backend-production.up.railway.app";
 
 type ApiOptions = RequestInit & {
   token?: string | null;
@@ -20,7 +22,13 @@ export async function apiRequest<T>(
   });
 
   const raw = await response.text();
-  const data = raw ? JSON.parse(raw) : {};
+
+  let data: any;
+  try {
+    data = raw ? JSON.parse(raw) : {};
+  } catch {
+    throw new Error("Invalid JSON response from server");
+  }
 
   if (!response.ok) {
     const message =
