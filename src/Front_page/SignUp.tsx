@@ -64,17 +64,16 @@ export default function SignUp() {
           password,
         }),
       });
-      
-      toast.success("Account created successfully");
+      setLoading(false);
+      toast.success(data.message || "Account created successfully");
       navigate("/login", { replace: true });
-    } catch (error: any) {
+    } 
+    catch (error: any) {
       toast.error(
         error?.message?.includes("fetch")
           ? "Cannot connect to backend. Start server on http://localhost:8000"
           : error.message || "Server error",
       );
-    } finally {
-      setLoading(false);
     }
   };
 

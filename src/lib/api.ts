@@ -12,27 +12,14 @@ export async function apiRequest<T>(
 ): Promise<T> {
   const { token, headers, ...rest } = options;
 
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 7000);
-
-  let response;
-
-  try {
-    response = await fetch(`${API_BASE}${path}`, {
-      ...rest,
-      headers: {
-        "Content-Type": "application/json",
-        ...(token ? { Authorization: `Bearer ${token}` } : {}),
-        ...headers,
-      },
-      signal: controller.signal, 
-    });
-  } catch (err) {
-    clearTimeout(timeout);
-    throw new Error("Request timed out or network error");
-  }
-
-  clearTimeout(timeout);
+  const response = await fetch(`${API_BASE}${path}`, {
+    ...rest,
+    headers: {
+      "Content-Type": "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...headers,
+    },
+  });
 
   const raw = await response.text();
 
