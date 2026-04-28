@@ -124,7 +124,9 @@ export default function SignUp() {
           />
         </label>
 
-        <button className="button button--primary" type="submit" disabled={loading}>
+        <button className="button button--primary" type="submit" disabled={loading} onClick={(e)=>{
+          if(loading) e.preventDefault();
+        }}>
           {loading ? "Creating account..." : "Sign up"}
         </button>
 
