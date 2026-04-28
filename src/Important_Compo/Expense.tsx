@@ -64,7 +64,7 @@ export default function Expense() {
 
     try {
       setSaving(true);
-      await apiRequest("/users/expense", {
+      await apiRequest("/expense", {
         method: "POST",
         token,
         body: JSON.stringify({
@@ -100,7 +100,7 @@ export default function Expense() {
     try {
       setHistoryLoading(true);
       const data = await apiRequest<ExpenseItem[] | { expense?: ExpenseItem[] }>(
-        "/users/history",
+        "/expense/history",
         {
           method: "GET",
           token,
