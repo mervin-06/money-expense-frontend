@@ -64,8 +64,8 @@ export default function SignUp() {
           password,
         }),
       });
-
-      toast.success(data.message || "Account created successfully");
+      
+      toast.success("Account created successfully");
       navigate("/login", { replace: true });
     } catch (error: any) {
       toast.error(
