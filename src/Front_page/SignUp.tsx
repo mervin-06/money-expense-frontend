@@ -64,16 +64,21 @@ export default function SignUp() {
           password,
         }),
       });
-      setLoading(false);
       toast.success(data.message || "Account created successfully");
       navigate("/login", { replace: true });
     } 
     catch (error: any) {
+      console.error("Signup error:", error);
       toast.error(
-        error?.message?.includes("fetch")
-          ? "Cannot connect to backend. Start server on http://localhost:8000"
+        error?.message?.includes("timeout")
+          ? "Server is taking too long to respond. Please try again."
+          : error?.message?.includes("fetch")
+          ? "Cannot connect to backend. Check your internet connection."
           : error.message || "Server error",
       );
+    } 
+    finally {
+      setLoading(false);
     }
   };
 
