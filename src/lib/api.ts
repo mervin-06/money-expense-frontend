@@ -1,6 +1,6 @@
 const API_BASE =
-  import.meta.env.VITE_SERVER_APP_URL ||
-  "https://money-expense-backend-production.up.railway.app";
+  import.meta.env.VITE_SERVER_APP_URL || "http://localhost:8000/"
+  // "https://money-expense-backend-production.up.railway.app";
 
 const REQUEST_TIMEOUT_MS = 30000; // 30 seconds - Railway may need time to wake up
 
